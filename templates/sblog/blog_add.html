@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %} Post text {% endblock %}
+
+{% block article %}
+
+<form action = ""  method = "post">
+	{% csrf_token %}
+	<div class = "Field">
+		<label for = "id_caption">Title:</label>
+		{% if form.caption.errors %}
+		<div class = "alert alert-error">
+			{{ form.caption.errors }}
+		</div>
+		{% endif %}
+		{{ form.caption }}
+	</div>
+	<div class = "field">
+        <label for = "id_tag">tags</label>
+        {% if tag.tag_name.errors %}
+        <div class = "alert alert-error">
+            {{ tag.tag_name.errors }}
+        </div>
+        {% endif %}
+        {{ tag.tag_name }}
+    </div>
+	<div class = "form-actions">
+		<input class = "btn btn-primary" type = "submit" value = "save and add">
+	</div>
+</form>
+
+{% endblock %}
